@@ -30,7 +30,7 @@ const Register = () => {
 
   return (
     <div className="h-screen flex justify-center items-center">
-      <div className="card w-96 bg-neutral-content text-neutral overflow-hidden">
+      <div className="card w-96 bg-base-100 text-base-content overflow-hidden">
         <div className="card-body items-center text-center">
           <h2 className="card-title">Sign Up</h2>
           <Formik
