@@ -1,26 +1,32 @@
-import { useSelector } from 'react-redux';
-import { useLoginMutation } from 'renderer/redux/services/auth';
+import { Chart } from 'react-google-charts';
+
+export const data = [
+  ['From', 'To', 'Weight'],
+  ['A', 'X', 5],
+  ['A', 'Y', 7],
+  ['A', 'Z', 6],
+  ['B', 'X', 2],
+  ['B', 'Y', 9],
+  ['B', 'Z', 4],
+];
+
+export const options = {};
+
 
 const Dashboard = () => {
-  const [login, error] = useLoginMutation();
-  const isLoggedIn = useSelector((state: any) => state.authSlice.loggedIn);
-  const token = useSelector((state: any) => state.authSlice.token);
-
-  console.log(error);
-  console.log(token);
-  console.log(isLoggedIn);
-  const handleClick = async () => {
-    console.log('fetch');
-    const response = await fetch('https://jobs-search.herokuapp.com/');
-    // const data = await response.json();
-    console.log(response);
-
-    login({ email: 'dummy@gmail.com', password: 'seret' });
-  };
 
   return (
     <div className="w-full h-full p-8">
       <h1 className="text-4xl font-bold text-primary">Your Dashboard</h1>
+      <div className='mt-8'>
+        <Chart
+          chartType="Sankey"
+          width="100%"
+          height="60vh"
+          data={data}
+          options={options}
+        />
+      </div>
     </div>
   );
 };
