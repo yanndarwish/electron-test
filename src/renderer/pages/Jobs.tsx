@@ -1,15 +1,8 @@
 import Loader from 'renderer/components/Loader';
 import { IJobResponse } from 'renderer/interfaces';
 import { useGetAllJobsQuery } from 'renderer/redux/services/job';
-
-const jobStatusArray = [
-  'pending',
-  'ghosted',
-  'rejected',
-  'interview',
-  'test',
-  'revived',
-];
+import { MdAdd } from 'react-icons/md';
+import JobCard from 'renderer/components/JobCard';
 
 const Jobs = () => {
   const { data, isError, isLoading } = useGetAllJobsQuery({});
@@ -21,7 +14,27 @@ const Jobs = () => {
     </div>
   ) : (
     <div className="w-full h-full p-8">
-      <h1 className="text-4xl font-bold text-primary">Your Job Applications</h1>
+      <div className="flex justify-between">
+        <h1 className="text-4xl font-bold text-primary text-center md:text-left">
+          Your Job Applications
+        </h1>
+        {/* The button to open modal */}
+        <label htmlFor="my-modal-4" className="btn btn-primary rounded-full">
+          <MdAdd />
+        </label>
+        <input type="checkbox" id="my-modal-4" className="modal-toggle" />
+        <label htmlFor="my-modal-4" className="modal cursor-pointer">
+          <label className="modal-box relative" htmlFor="">
+            <h3 className="text-lg font-bold">
+              Congratulations random Internet user!
+            </h3>
+            <p className="py-4">
+              You've been selected for a chance to get one year of subscription
+              to use Wikipedia for free!
+            </p>
+          </label>
+        </label>
+      </div>
       {/* filters */}
       <div></div>
       {/* container */}
@@ -32,7 +45,8 @@ const Jobs = () => {
           </h2>
         </div>
       ) : (
-        <div className="mt-12">
+        <div className="flex gap-20 mt-12 flex-wrap justify-center md:justify-start">
+          {/* if no job applications */}
           {data.count === 0 ? (
             <div className="h-5/6 flex items-center justify-center">
               <h2 className="text-2xl font-semibold text-center">
@@ -40,64 +54,11 @@ const Jobs = () => {
               </h2>
             </div>
           ) : (
-            // todo fiw z-index bug
-            data.jobs?.map((item: IJobResponse, i: number) => (
-              <div className="indicator " key={i}>
-                <div className="dropdown indicator-item indicator-top z-10">
-                  <label
-                    tabIndex={0}
-                    className={`btn z-10 ${
-                      item.status === 'pending'
-                        ? 'btn-warning'
-                        : item.status === 'ghosted'
-                        ? 'btn-error-content'
-                        : item.status === 'rejected'
-                        ? 'btn-error'
-                        : item.status === 'interview'
-                        ? 'btn-primary'
-                        : item.status === 'test'
-                        ? 'btn-accent'
-                        : 'btn-secondary'
-                    }`}
-                  >
-                    {item.status}
-                  </label>
-                  <ul
-                    tabIndex={0}
-                    className="dropdown-content menu p-2 shadow bg-base-300 rounded-box w-52 z-20"
-                  >
-                    {jobStatusArray
-                      .filter((status) => status !== item.status)
-                      .map((status, i) => (
-                        <li key={i}>
-                          <a
-                            className={`w-[90%] uppercase ${
-                              status === 'pending'
-                                ? 'text-warning'
-                                : status === 'ghosted'
-                                ? 'text-error-content'
-                                : status === 'rejected'
-                                ? 'text-error'
-                                : status === 'interview'
-                                ? 'text-primary'
-                                : status === 'test'
-                                ? 'text-accent'
-                                : 'text-secondary'
-                            }`}
-                          >
-                            {status}
-                          </a>
-                        </li>
-                      ))}
-                  </ul>
-                </div>
-                <div className="card w-96 bg-base-100 shadow-xl">
-                  <div className="card-body">
-                    <h2 className="card-title uppercase">{item.company}</h2>
-                    <p className="capitalize">{item.position}</p>
-                  </div>
-                </div>
-              </div>
+            // todo fix z-index bug
+            // else display all cards
+            data.jobs?.map((job: IJobResponse, i: number) => (
+              // job cards
+              <JobCard job={job} key={i}/>
             ))
           )}
         </div>
