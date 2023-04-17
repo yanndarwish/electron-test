@@ -15,5 +15,14 @@ module.exports = {
   variants: {
     extend: {},
   },
+  daisyui: {
+    styled: true,
+    themes: ['dracula'],
+    base: true,
+    utils: true,
+    logs: true,
+    rtl: false,
+    prefix: '',
+  },
   plugins: [daisyui],
 };

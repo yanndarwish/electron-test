@@ -8,3 +8,11 @@ export type User = {
   email: string;
   password: string;
 };
+
+export type JobStatus =
+  | 'pending'
+  | 'ghosted'
+  | 'rejected'
+  | 'interview'
+  | 'test'
+  | 'revived';

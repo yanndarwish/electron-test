@@ -19,11 +19,8 @@ const Dashboard = () => {
   };
 
   return (
-    <div>
-      <h1>Dashboard</h1>
-      <button type="button" className="btn" onClick={() => handleClick()}>
-        Fetch
-      </button>
+    <div className="w-full h-full p-8">
+      <h1 className="text-4xl font-bold text-primary">Your Dashboard</h1>
     </div>
   );
 };

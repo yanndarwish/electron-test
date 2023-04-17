@@ -1,8 +1,9 @@
 import { createHashRouter } from 'react-router-dom';
-import Dashboard from 'renderer/pages/Dashboard';
+import Home from 'renderer/pages/Home';
 import Login from 'renderer/pages/Login';
 import Root from './Root';
 import Register from 'renderer/pages/Register';
+import Jobs from 'renderer/pages/Jobs';
 
 const router = createHashRouter([
   {
@@ -10,8 +11,12 @@ const router = createHashRouter([
     element: <Root />,
     children: [
       {
-        path: 'dashboard',
-        element: <Dashboard />,
+        path: '/',
+        element: <Home />,
+      },
+      {
+        path: 'jobs',
+        element: <Jobs />,
       },
     ],
   },
