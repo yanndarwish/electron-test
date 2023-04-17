@@ -17,7 +17,7 @@ module.exports = {
   },
   daisyui: {
     styled: true,
-    themes: ['dracula'],
+    themes: ['cmyk'],
     base: true,
     utils: true,
     logs: true,

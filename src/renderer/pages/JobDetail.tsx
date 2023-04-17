@@ -103,7 +103,7 @@ const JobDetail = () => {
     </div>
   ) : (
     <div className="w-full h-full p-8 flex items-center justify-center">
-      <div className="card w-96 bg-neutral shadow-xl relative">
+      <div className="card w-96 bg-base-200 shadow-xl relative">
         {/* action loaders */}
         {(updateLoading || deleteLoading) && (
           <div className="absolute top-0 right-0 left-0 bottom-0 flex justify-center items-center bg-base-300/80 z-10 rounded-lg">
@@ -140,7 +140,7 @@ const JobDetail = () => {
                         onChange={handleChange}
                         value={values.company}
                         name="company"
-                        className="input input-bordered w-full bg-neutral"
+                        className="input input-bordered w-full bg-base-200"
                       />
                       <label className="label">
                         {!!touched.company && !!errors.company && (
@@ -158,7 +158,7 @@ const JobDetail = () => {
                         onChange={handleChange}
                         value={values.position}
                         name="position"
-                        className="input input-bordered w-full bg-neutral"
+                        className="input input-bordered w-full bg-base-200"
                       />
                       <label className="label">
                         {!!touched.position && !!errors.position && (
@@ -176,7 +176,7 @@ const JobDetail = () => {
                         onChange={handleChange}
                         value={values.link}
                         name="link"
-                        className="input input-bordered w-full bg-neutral"
+                        className="input input-bordered w-full bg-base-200"
                       />
                       <label className="label">
                         {!!touched.link && !!errors.link && (
@@ -188,7 +188,7 @@ const JobDetail = () => {
                     </div>
                     <div className="form-control w-full">
                       <select
-                        className="select select-bordered bg-neutral"
+                        className="select select-bordered bg-base-200"
                         name="status"
                         onBlur={handleBlur}
                         onChange={handleChange}

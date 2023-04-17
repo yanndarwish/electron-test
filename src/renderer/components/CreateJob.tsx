@@ -43,7 +43,7 @@ const CreateJob = () => {
         className="modal cursor-pointer bg-base-300/80"
       >
         <label
-          className="modal-box relative min-h-[40vh] bg-neutral"
+          className="modal-box relative min-h-[40vh] bg-base-200"
           htmlFor=""
         >
           {/* sucess message */}
@@ -86,7 +86,7 @@ const CreateJob = () => {
                       onChange={handleChange}
                       value={values.company}
                       name="company"
-                      className="input input-bordered w-full bg-neutral"
+                      className="input input-bordered w-full bg-base-200"
                     />
                     <label className="label">
                       {!!touched.company && !!errors.company && (
@@ -104,7 +104,7 @@ const CreateJob = () => {
                       onChange={handleChange}
                       value={values.position}
                       name="position"
-                      className="input input-bordered w-full bg-neutral"
+                      className="input input-bordered w-full bg-base-200"
                     />
                     <label className="label">
                       {!!touched.position && !!errors.position && (
@@ -122,7 +122,7 @@ const CreateJob = () => {
                       onChange={handleChange}
                       value={values.link}
                       name="link"
-                      className="input input-bordered w-full bg-neutral"
+                      className="input input-bordered w-full bg-base-200"
                     />
                     <label className="label">
                       {!!touched.link && !!errors.link && (
