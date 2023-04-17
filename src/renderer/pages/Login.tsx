@@ -49,7 +49,7 @@ const Login = () => {
             }) => (
               <form onSubmit={handleSubmit} className="w-full">
                 {isLoading && (
-                  <div className="absolute top-0 right-0 left-0 bottom-0 flex justify-center items-center bg-neutral-50/70">
+                  <div className="absolute top-0 right-0 left-0 bottom-0 flex justify-center items-center bg-base-300/80 z-10">
                     <Loader />
                   </div>
                 )}

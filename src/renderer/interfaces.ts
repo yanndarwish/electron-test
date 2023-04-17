@@ -4,8 +4,11 @@ export interface IJob {
   link: string;
 }
 
-export interface IJobResponse extends IJob {
+export interface IJobStatus extends IJob {
   status: string;
+}
+
+export interface IJobResponse extends IJobStatus {
   createdBy: string;
   _id: string;
   createdAt: string;

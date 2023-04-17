@@ -4,6 +4,7 @@ import Login from 'renderer/pages/Login';
 import Root from './Root';
 import Register from 'renderer/pages/Register';
 import Jobs from 'renderer/pages/Jobs';
+import JobDetail from 'renderer/pages/JobDetail';
 
 const router = createHashRouter([
   {
@@ -17,6 +18,10 @@ const router = createHashRouter([
       {
         path: 'jobs',
         element: <Jobs />,
+      },
+      {
+        path: 'jobs/:id',
+        element: <JobDetail />,
       },
     ],
   },

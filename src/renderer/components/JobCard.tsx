@@ -1,26 +1,31 @@
 import { FiExternalLink } from 'react-icons/fi';
 import { IJobResponse } from 'renderer/interfaces';
-
-const jobStatusArray = [
-  'pending',
-  'ghosted',
-  'rejected',
-  'interview',
-  'test',
-  'revived',
-];
+import { useNavigate } from 'react-router-dom';
 
 export interface IJobCardProps {
   job: IJobResponse;
 }
 
 const JobCard = (props: IJobCardProps) => {
+  const navigate = useNavigate();
+
   return (
-    <div className="indicator">
-      <div className="dropdown indicator-item indicator-top z-10">
-        <label
-          tabIndex={0}
-          className={`btn z-10 ${
+    <div
+      className="card bg-base-200 shadow-xl flex-shrink flex-grow relative min-w-[300px]"
+      onClick={() => navigate(`/jobs/${props.job._id}`)}
+    >
+      <div className="card-body">
+        <div className="flex justify-between w-full">
+          <h2 className="card-title uppercase">{props.job.company}</h2>
+          {/* todo find way to trigger external links */}
+          <a href={props.job.link} className="text-info p-0">
+            <FiExternalLink size={20} style={{ padding: 0 }} />
+          </a>
+        </div>
+        <p className="capitalize mb-4">{props.job.position}</p>
+        {/* status */}
+        <div
+          className={`btn z-10 text-xs p-2 h-min min-h-min w-full ${
             props.job.status === 'pending'
               ? 'btn-warning'
               : props.job.status === 'ghosted'
@@ -35,45 +40,6 @@ const JobCard = (props: IJobCardProps) => {
           }`}
         >
           {props.job.status}
-        </label>
-        <ul
-          tabIndex={0}
-          className="dropdown-content menu p-2 shadow bg-base-300 rounded-box z-20"
-        >
-          {jobStatusArray
-            .filter((status) => status !== props.job.status)
-            .map((status, i) => (
-              <li key={i}>
-                <a
-                  className={`w-[100%] uppercase m-0 text-sm ${
-                    status === 'pending'
-                      ? 'text-warning'
-                      : status === 'ghosted'
-                      ? 'text-error-content'
-                      : status === 'rejected'
-                      ? 'text-error'
-                      : status === 'interview'
-                      ? 'text-primary'
-                      : status === 'test'
-                      ? 'text-accent'
-                      : 'text-secondary'
-                  }`}
-                >
-                  {status}
-                </a>
-              </li>
-            ))}
-        </ul>
-      </div>
-      <div className="card bg-base-200 shadow-xl flex-shrink flex-grow">
-        <div className="card-body">
-          <h2 className="card-title uppercase">{props.job.company}</h2>
-          <p className="capitalize">{props.job.position}</p>
-          {/* todo find way to trigger external links */}
-          <a href={props.job.link} className="flex items-center gap-4 text-info">
-            Check website
-            <FiExternalLink size={18} />
-          </a>
         </div>
       </div>
     </div>

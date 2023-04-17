@@ -16,11 +16,13 @@ export const jobApi = createApi({
       return headers;
     },
   }),
+  tagTypes: ['Jobs', 'Job'],
   endpoints: (builder) => ({
     getAllJobs: builder.query({
       query: () => ({
         url: '/',
       }),
+      providesTags: ['Jobs'],
     }),
     createJob: builder.mutation({
       query: (payload) => ({
@@ -28,11 +30,13 @@ export const jobApi = createApi({
         method: 'POST',
         body: payload,
       }),
+      invalidatesTags: ['Jobs'],
     }),
     getSingleJob: builder.query({
       query: ({ id }) => ({
         url: `/${id}`,
       }),
+      providesTags: ['Job'],
     }),
     updateJob: builder.mutation({
       query: ({ id, payload }) => ({
@@ -40,12 +44,14 @@ export const jobApi = createApi({
         method: 'PATCH',
         body: payload,
       }),
+      invalidatesTags: ['Jobs', 'Job'],
     }),
     deleteJob: builder.mutation({
       query: ({ id }) => ({
         url: `/${id}`,
         method: 'DELETE',
       }),
+      invalidatesTags: ['Jobs', 'Job'],
     }),
   }),
 });
