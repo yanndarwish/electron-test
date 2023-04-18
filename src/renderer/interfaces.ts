@@ -16,6 +16,11 @@ export interface IJobResponse extends IJobStatus {
   __v: number;
 }
 
+export interface IAllJobsResponse {
+  jobs: IJobResponse[];
+  count: number
+}
+
 export interface ApiErrorResponse {
   status: number;
   data: { msg: string };

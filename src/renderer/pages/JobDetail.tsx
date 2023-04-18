@@ -54,7 +54,7 @@ const JobDetail = () => {
     useUpdateJobMutation();
 
   // functions
-  const handleDelete = (id: string) => {
+  const handleDelete = (id: string | undefined) => {
     navigate('/jobs');
     deleteJob({ id });
   };

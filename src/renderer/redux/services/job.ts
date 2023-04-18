@@ -1,5 +1,11 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import store from '../store/store';
+import {
+  IAllJobsResponse,
+  IJob,
+  IJobResponse,
+  IJobStatus,
+} from 'renderer/interfaces';
 const url = 'https://jobs-search.herokuapp.com/api/v1/jobs';
 
 export const jobApi = createApi({
@@ -18,13 +24,13 @@ export const jobApi = createApi({
   }),
   tagTypes: ['Jobs', 'Job'],
   endpoints: (builder) => ({
-    getAllJobs: builder.query({
+    getAllJobs: builder.query<IAllJobsResponse, void>({
       query: () => ({
         url: '/',
       }),
       providesTags: ['Jobs'],
     }),
-    createJob: builder.mutation({
+    createJob: builder.mutation<IJobResponse, IJob>({
       query: (payload) => ({
         url: '/',
         method: 'POST',
@@ -32,13 +38,19 @@ export const jobApi = createApi({
       }),
       invalidatesTags: ['Jobs'],
     }),
-    getSingleJob: builder.query({
+    getSingleJob: builder.query<
+      { job: IJobResponse },
+      { id: string | undefined }
+    >({
       query: ({ id }) => ({
         url: `/${id}`,
       }),
       providesTags: ['Job'],
     }),
-    updateJob: builder.mutation({
+    updateJob: builder.mutation<
+      IJobResponse,
+      { id: string | undefined; payload: IJobStatus }
+    >({
       query: ({ id, payload }) => ({
         url: `/${id}`,
         method: 'PATCH',
@@ -46,7 +58,10 @@ export const jobApi = createApi({
       }),
       invalidatesTags: ['Jobs', 'Job'],
     }),
-    deleteJob: builder.mutation({
+    deleteJob: builder.mutation<
+      { job: IJobResponse },
+      { id: string | undefined }
+    >({
       query: ({ id }) => ({
         url: `/${id}`,
         method: 'DELETE',

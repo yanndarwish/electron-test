@@ -1,12 +1,11 @@
 import Loader from 'renderer/components/Loader';
-import { IJobResponse } from 'renderer/interfaces';
 import { useGetAllJobsQuery } from 'renderer/redux/services/job';
 import { MdAdd } from 'react-icons/md';
 import JobCard from 'renderer/components/JobCard';
 import CreateJob from 'renderer/components/CreateJob';
 
 const Jobs = () => {
-  const { data, isError, isLoading } = useGetAllJobsQuery({});
+  const { data, isError, isLoading } = useGetAllJobsQuery();
 
   return isLoading ? (
     // page loader
@@ -40,7 +39,7 @@ const Jobs = () => {
       ) : (
         <div className="grid grid-cols-1 place-items-center  gap-y-20 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-16">
           {/* if no job applications */}
-          {data.count === 0 ? (
+          {data?.count === 0 ? (
             <div className="h-5/6 flex items-center justify-center">
               <h2 className="text-2xl font-semibold text-center">
                 No job application to display
@@ -49,7 +48,7 @@ const Jobs = () => {
           ) : (
             // todo fix z-index bug
             // else display all cards
-            data.jobs?.map((job: IJobResponse, i: number) => (
+            data?.jobs.map((job, i) => (
               // job cards
               <JobCard job={job} key={i} />
             ))
