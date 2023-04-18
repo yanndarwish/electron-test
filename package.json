@@ -94,6 +94,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.3",
+    "chart.js": "^4.2.1",
     "daisyui": "^2.51.5",
     "electron-debug": "^3.2.0",
     "electron-log": "^4.4.8",
@@ -101,8 +102,8 @@
     "express": "^4.18.2",
     "formik": "^2.2.9",
     "react": "^18.2.0",
+    "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
-    "react-google-charts": "^4.0.0",
     "react-icons": "^4.8.0",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.8.1",
