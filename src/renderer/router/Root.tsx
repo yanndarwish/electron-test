@@ -15,7 +15,7 @@ const Root = () => {
   return (
     <div className="h-screen">
       {/* navbar */}
-      <div className="navbar bg-base-200 h-[10%]">
+      <div className="navbar bg-base-200 h-[10%] shadow-lg">
         <div className="flex-1">
           <h2 className="normal-case text-xl font-semibold pl-8">{name}</h2>
           <ul className=" flex flex-row p-4 pe-8 w-80 text-base-content">
