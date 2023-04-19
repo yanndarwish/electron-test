@@ -1,9 +1,12 @@
-import { useSelector } from 'react-redux';
+// components
 import BarChart from 'renderer/components/Charts/BarChart';
 import PieChart from 'renderer/components/Charts/PieChart';
 import StatBox from 'renderer/components/StatBox';
+// interfaces
 import { IJobResponse } from 'renderer/interfaces';
+// redux
 import { useGetAllJobsQuery } from 'renderer/redux/services/job';
+import { useSelector } from 'react-redux';
 
 const Home = () => {
   useGetAllJobsQuery();

@@ -5,6 +5,7 @@ import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom';
 const Root = () => {
   const location = useLocation();
   const navigate = useNavigate();
+
   const isLoggedIn = useSelector((state: any) => state.authSlice.loggedIn);
   const name = useSelector((state: any) => state.authSlice.name);
 
@@ -63,7 +64,7 @@ const Root = () => {
           </ul>
         </div>
       </div>
-      <div className="h-[90%] bg-base-100">
+      <div className="min-h-[90%] bg-base-100">
         {/* Page content here */}
 
         <Outlet />

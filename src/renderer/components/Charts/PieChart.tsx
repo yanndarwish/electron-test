@@ -42,9 +42,9 @@ const PieChart = (props: IPieChartProps) => {
         backgroundColor: [
           '#FFB86C',
           'rgba(255, 86, 85, 1)',
-          'rgba(79, 250, 123, 1)',
+          '#4BCF6D',
           'rgba(54, 162, 235, 1)',
-          'rgba(75, 192, 192, 1)',
+          '#414558',
         ],
       },
     ],

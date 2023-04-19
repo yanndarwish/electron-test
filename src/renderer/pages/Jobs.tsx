@@ -1,11 +1,30 @@
+import { useEffect, useState } from 'react';
+// components
 import Loader from 'renderer/components/Loader';
-import { useGetAllJobsQuery } from 'renderer/redux/services/job';
-import { MdAdd } from 'react-icons/md';
 import JobCard from 'renderer/components/JobCard';
 import CreateJob from 'renderer/components/CreateJob';
+import Filter from 'renderer/components/Filter';
+import Search from 'renderer/components/Search';
+// interfaces
+import { IJobResponse } from 'renderer/interfaces';
+// redux endpoint
+import { useGetAllJobsQuery } from 'renderer/redux/services/job';
+// utils
+import { filterJobs, sortJobs } from 'renderer/utils';
+// icons
+import { MdAdd } from 'react-icons/md';
 
 const Jobs = () => {
   const { data, isError, isLoading } = useGetAllJobsQuery();
+  const [active, setActive] = useState<string>('all');
+  const [query, setQuery] = useState<string>('');
+  const [jobs, setJobs] = useState<IJobResponse[] | []>([]);
+
+  const sortedJobs = data ? sortJobs(data?.jobs) : []
+
+  useEffect(() => {
+    setJobs(filterJobs(sortedJobs, query, active));
+  }, [query, active]);
 
   return isLoading ? (
     // page loader
@@ -13,7 +32,7 @@ const Jobs = () => {
       <Loader />
     </div>
   ) : (
-    <div className="w-full h-full p-8">
+    <div className="w-full h-full p-8 min-h-max">
       <div className="flex justify-between">
         {/* page title */}
         <h1 className="text-4xl font-bold text-center md:text-left">
@@ -26,8 +45,14 @@ const Jobs = () => {
         {/* the Create Job modal */}
         <CreateJob />
       </div>
+      {/* Title search */}
+      <Search query={query} setQuery={setQuery} />
       {/* filters */}
-      <div></div>
+      <Filter active={active} setActive={setActive} />
+      {/* number of results */}
+      <h1 className="text-2xl font-semibold text-center md:text-left">
+        Number of results : {jobs.length}
+      </h1>
       {/* container */}
       {isError ? (
         // error message
@@ -48,7 +73,7 @@ const Jobs = () => {
           ) : (
             // todo fix z-index bug
             // else display all cards
-            data?.jobs.map((job, i) => (
+            jobs.map((job, i) => (
               // job cards
               <JobCard job={job} key={i} />
             ))

@@ -1,4 +1,3 @@
-import { INSPECT_MAX_BYTES } from 'buffer';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -91,13 +90,13 @@ const BarChart = (props: IBarChartProps) => {
       {
         label: 'Ghosted',
         data: [ghostedCount],
-        backgroundColor: 'rgba(75, 192, 192, 1)',
+        backgroundColor: '#414558',
         borderColor: '#F8F8F8',
       },
       {
         label: 'Interview',
         data: [interviewCount],
-        backgroundColor: 'rgba(79, 250, 123, 1)',
+        backgroundColor: '#4BCF6D',
         borderColor: '#F8F8F8',
       },
       {

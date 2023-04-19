@@ -14,12 +14,12 @@ const StatBox = (props: IStatBoxProps) => {
           : props.title === 'rejected'
           ? 'bg-error'
           : props.title === 'interview'
-          ? 'bg-success'
+          ? 'bg-success/80'
           : ''
-      } p-8 w-36 h-36 rounded-lg drop-shadow-lg`}
+      } p-8 w-36 h-36 rounded-lg drop-shadow-lg relative flex justify-center items-center`}
     >
-      <p className="text-4xl text-center mb-6 font-bold">{props.count}</p>
-      <p className="text-xl text-center capitalize">{props.title}</p>
+      <p className="text-4xl text-center font-bold">{props.count}</p>
+      <p className="absolute top-4 text-xl text-center font-semibold capitalize">{props.title}</p>
     </div>
   );
 };

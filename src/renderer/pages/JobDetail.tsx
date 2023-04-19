@@ -1,15 +1,19 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+// components
 import Loader from 'renderer/components/Loader';
+import Confirm from 'renderer/components/Confirm';
+// interfaces
+import { IJobStatus, isApiResponse } from 'renderer/interfaces';
+// form : Formik & yup
+import { Formik } from 'formik';
+import * as yup from 'yup';
+// redux endpoints
 import {
   useDeleteJobMutation,
   useGetSingleJobQuery,
   useUpdateJobMutation,
 } from 'renderer/redux/services/job';
-import { Formik } from 'formik';
-import * as yup from 'yup';
-import { IJobStatus, isApiResponse } from 'renderer/interfaces';
-import Confirm from 'renderer/components/Confirm';
 
 const jobSchema = yup.object().shape({
   company: yup.string().required('Company is required'),
@@ -18,7 +22,7 @@ const jobSchema = yup.object().shape({
   status: yup.string().required('Status is required'),
 });
 
-const jobStatusArray = [
+export const jobStatusArray = [
   'pending',
   'ghosted',
   'rejected',
@@ -93,16 +97,16 @@ const JobDetail = () => {
 
   return isLoading ? (
     // page loader
-    <div className="w-full h-full flex justify-center items-center">
+    <div className="w-full h-[85vh] flex justify-center items-center">
       <Loader />
     </div>
   ) : isSuccess || isDeleteSuccess ? (
     // success message
-    <div className="w-full h-full  flex justify-center items-center">
+    <div className="w-full h-[85vh]  flex justify-center items-center">
       <Confirm />
     </div>
   ) : (
-    <div className="w-full h-full p-8 flex items-center justify-center">
+    <div className="w-full h-[85vh] p-8 flex items-center justify-center">
       <div className="card w-96 bg-base-200 shadow-xl relative">
         {/* action loaders */}
         {(updateLoading || deleteLoading) && (
