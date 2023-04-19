@@ -8,7 +8,7 @@ const Search = (props: ISearchProps) => {
     <div className="form-control w-full max-w-xs mt-8">
       <input
         type="text"
-        placeholder="Search for company name ..."
+        placeholder="Search ..."
         className="input input-bordered w-full max-w-xs"
         value={props.query}
         onChange={(e) => props.setQuery(e.target.value)}
