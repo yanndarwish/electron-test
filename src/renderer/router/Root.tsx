@@ -1,6 +1,9 @@
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom';
+import CreateJob from 'renderer/components/CreateJob';
+import { MdAdd } from 'react-icons/md';
+
 
 const Root = () => {
   const location = useLocation();
@@ -16,7 +19,7 @@ const Root = () => {
   return (
     <div className="h-screen">
       {/* navbar */}
-      <div className="navbar bg-base-200 h-[10%] shadow-lg">
+      <div className="navbar bg-base-300 h-[10%] shadow-lg">
         <div className="flex-1">
           <h2 className="normal-case text-xl font-semibold pl-8">{name}</h2>
           <ul className=" flex flex-row p-4 pe-8 w-80 text-base-content">
@@ -43,26 +46,12 @@ const Root = () => {
             </li>
           </ul>
         </div>
-        <div className="dropdown dropdown-end me-2">
-          <label tabIndex={0} className="btn btn-ghost rounded-full p-0 h-0 ">
-            <div className="avatar placeholder">
-              <div className="bg-neutral-focus text-neutral-content w-10 rounded-full">
-                <span>{name.split('')[0]}</span>
-              </div>
-            </div>
-          </label>
-          <ul
-            tabIndex={0}
-            className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
-          >
-            <li>
-              <a className="w-[90%]">Item 1</a>
-            </li>
-            <li>
-              <a className="w-[90%]">Item 2</a>
-            </li>
-          </ul>
-        </div>
+        {/* The button to open modal */}
+        <label htmlFor="my-modal-4" className="btn btn-primary rounded-full me-4">
+          <MdAdd />
+        </label>
+        {/* the Create Job modal */}
+        <CreateJob />
       </div>
       <div className="min-h-[90%] bg-base-100">
         {/* Page content here */}
