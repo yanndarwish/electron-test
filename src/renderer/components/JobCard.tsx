@@ -9,8 +9,7 @@ export interface IJobCardProps {
 
 const JobCard = (props: IJobCardProps) => {
   const navigate = useNavigate();
-  const date = formatDate(props.job.createdAt)
-
+  const date = formatDate(props.job.createdAt);
 
   return (
     <div
@@ -23,9 +22,17 @@ const JobCard = (props: IJobCardProps) => {
             {props.job.company}
           </h2>
           {/* todo find way to trigger external links */}
-          <a href={props.job.link} className="text-info p-0">
-            <FiExternalLink size={20} style={{ padding: 0 }} />
-          </a>
+          {props.job.link.startsWith('http') && (
+            <a
+              href={props.job.link}
+              className="text-info p-0"
+              target="_blank"
+              rel="noreferrer"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <FiExternalLink size={20} style={{ padding: 0 }} />
+            </a>
+          )}
         </div>
         <p className="capitalize mb-3 truncate text-ellipsis">
           {props.job.position}

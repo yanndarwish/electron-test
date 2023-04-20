@@ -56,5 +56,3 @@ export const shouldRevive = (job: IJobResponse) => {
   }
   return false;
 };
-
-

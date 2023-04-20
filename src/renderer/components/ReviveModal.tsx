@@ -57,9 +57,17 @@ const ReviveModal = (props: IReviveModalProps) => {
                   </h4>
                 </div>
                 {/* todo find way to trigger external links */}
-                <a href={job.link} className="text-primary p-0">
-                  <FiExternalLink size={20} style={{ padding: 0 }} />
-                </a>
+                {job.link.startsWith('http') && (
+                  <a
+                    href={job.link}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-primary btn btn-ghost"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <FiExternalLink size={20} style={{ padding: 0 }} />
+                  </a>
+                )}
               </div>
             ))}
           </div>
