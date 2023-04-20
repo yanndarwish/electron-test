@@ -14,7 +14,7 @@ const JobCard = (props: IJobCardProps) => {
 
   return (
     <div
-      className="card bg-base-200 shadow-xl flex-shrink flex-grow relative min-w-[300px] max-w-[300px]"
+      className="card bg-base-100 shadow-xl flex-shrink flex-grow relative min-w-[300px] max-w-[300px]"
       onClick={() => navigate(`/jobs/${props.job._id}`)}
     >
       <div className="card-body">

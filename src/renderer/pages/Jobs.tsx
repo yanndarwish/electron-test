@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 // components
 import Loader from 'renderer/components/Loader';
 import JobCard from 'renderer/components/JobCard';
-import CreateJob from 'renderer/components/CreateJob';
 import Filter from 'renderer/components/Filter';
 import Search from 'renderer/components/Search';
 // interfaces
@@ -11,8 +10,6 @@ import { IJobResponse } from 'renderer/interfaces';
 import { useGetAllJobsQuery } from 'renderer/redux/services/job';
 // utils
 import { filterJobs, sortJobs } from 'renderer/utils';
-// icons
-import { MdAdd } from 'react-icons/md';
 
 const Jobs = () => {
   const { data, isError, isLoading } = useGetAllJobsQuery();
@@ -38,12 +35,6 @@ const Jobs = () => {
         <h1 className="text-4xl font-bold text-center md:text-left">
           Your Job Applications
         </h1>
-        {/* The button to open modal */}
-        <label htmlFor="my-modal-4" className="btn btn-primary rounded-full">
-          <MdAdd />
-        </label>
-        {/* the Create Job modal */}
-        <CreateJob />
       </div>
       {/* Title search */}
       <Search query={query} setQuery={setQuery} />
@@ -62,7 +53,7 @@ const Jobs = () => {
           </h2>
         </div>
       ) : (
-        <div className="grid grid-cols-1 place-items-center  gap-y-20 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-16">
+        <div className="grid grid-cols-1 place-items-center  gap-y-20 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-16 bg-base-200 p-8 rounded-3xl">
           {/* if no job applications */}
           {data?.count === 0 ? (
             <div className="h-5/6 flex items-center justify-center">

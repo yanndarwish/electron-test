@@ -8,18 +8,22 @@ const StatBox = (props: IStatBoxProps) => {
     <div
       className={`${
         props.title === 'total'
-          ? 'bg-primary'
+          ? 'text-primary'
           : props.title === 'pending'
-          ? 'bg-accent'
+          ? 'text-accent'
           : props.title === 'rejected'
-          ? 'bg-error'
+          ? 'text-error'
           : props.title === 'interview'
-          ? 'bg-success/80'
+          ? 'text-success/80'
           : ''
-      } p-8 w-36 h-36 rounded-lg drop-shadow-lg relative flex justify-center items-center`}
+      } stats shadow-lg w-44 h-32`}
     >
-      <p className="text-4xl text-center font-bold">{props.count}</p>
-      <p className="absolute top-4 text-xl text-center font-semibold capitalize">{props.title}</p>
+      <div className="stat">
+        <p className="stat-title capitalize text-center font-semibold text-xl">
+          {props.title}
+        </p>
+        <p className="stat-value text-center">{props.count}</p>
+      </div>
     </div>
   );
 };

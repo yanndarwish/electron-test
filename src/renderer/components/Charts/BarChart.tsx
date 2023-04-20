@@ -24,6 +24,7 @@ export const options: ChartOptions<'bar'> = {
   maintainAspectRatio: false,
   plugins: {
     legend: {
+      display: false,
       position: 'right',
       labels: {
         color: '#F8F8F8',
@@ -40,12 +41,11 @@ export const options: ChartOptions<'bar'> = {
   responsive: true,
   scales: {
     x: {
+      display: false,
       stacked: true,
     },
     y: {
-      grid: {
-        display: false,
-      },
+      display: false,
       stacked: true,
     },
   },
@@ -107,7 +107,7 @@ const BarChart = (props: IBarChartProps) => {
       },
     ],
   };
-  return <Bar options={options} data={data} height={'500px'} />;
+  return <Bar options={options} data={data} height={'400px'} />;
 };
 
 export default BarChart;

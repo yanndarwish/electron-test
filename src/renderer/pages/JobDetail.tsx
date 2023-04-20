@@ -14,6 +14,7 @@ import {
   useGetSingleJobQuery,
   useUpdateJobMutation,
 } from 'renderer/redux/services/job';
+import { formatDate } from 'renderer/utils';
 
 const jobSchema = yup.object().shape({
   company: yup.string().required('Company is required'),
@@ -116,6 +117,7 @@ const JobDetail = () => {
         )}
         {/* form */}
         <div className="card-body">
+          {data?.job.createdAt && <h2 className='text-lg font-semibold ml-4'>Applied the {formatDate(data?.job.createdAt)}</h2>}
           {initialValues.company && (
             <Formik
               onSubmit={(values: IJobStatus, { resetForm }) => {

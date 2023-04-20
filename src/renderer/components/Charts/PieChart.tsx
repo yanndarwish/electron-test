@@ -19,6 +19,7 @@ const options: ChartOptions<'doughnut'> = {
   maintainAspectRatio: false,
   plugins: {
     legend: {
+      display: false,
       position: 'right',
       labels: {
         color: '#F8F8F8',
