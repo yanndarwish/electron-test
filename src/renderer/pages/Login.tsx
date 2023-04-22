@@ -1,11 +1,14 @@
+import { useLoginMutation } from 'renderer/redux/services/auth';
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+// form
 import { Formik } from 'formik';
 import * as yup from 'yup';
-import { useLoginMutation } from 'renderer/redux/services/auth';
-import { Login } from 'renderer/types';
+// components
 import Loader from 'renderer/components/Loader';
+// types
+import { Login } from 'renderer/types';
 import { isApiResponse } from 'renderer/interfaces';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
 
 const initialValues: Login = {
   email: 'dummy@gmail.com',
@@ -21,7 +24,7 @@ const Login = () => {
   const navigate = useNavigate();
   const [login, { error, isLoading, isSuccess }] = useLoginMutation();
 
-  const handleSubmit = (values: Login) => {
+  const handleSubmit = (values: Login): void => {
     login(values);
   };
 

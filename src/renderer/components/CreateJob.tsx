@@ -1,10 +1,13 @@
+import { useCreateJobMutation } from 'renderer/redux/services/job';
+import { useEffect } from 'react';
+// form
 import { Formik } from 'formik';
 import * as yup from 'yup';
-import { useCreateJobMutation } from 'renderer/redux/services/job';
+// types
 import { IJob } from 'renderer/interfaces';
-import Loader from 'renderer/components/Loader';
 import { isApiResponse } from 'renderer/interfaces';
-import { useEffect } from 'react';
+// components
+import Loader from 'renderer/components/Loader';
 import Confirm from './Confirm';
 
 const initialValues: IJob = {
@@ -23,7 +26,7 @@ const CreateJob = () => {
   const [createJob, { error, isLoading, isSuccess, reset, isUninitialized }] =
     useCreateJobMutation();
 
-  const handleSubmit = (values: IJob) => {
+  const handleSubmit = (values: IJob): void => {
     createJob(values);
   };
 

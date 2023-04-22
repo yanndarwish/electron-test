@@ -1,34 +1,31 @@
+import { useEffect, useState } from 'react';
 // components
 import BarChart from 'renderer/components/Charts/BarChart';
 import PieChart from 'renderer/components/Charts/PieChart';
 import StatBox from 'renderer/components/StatBox';
+import ReviveModal from 'renderer/components/ReviveModal';
 // interfaces
 import { IJobResponse } from 'renderer/interfaces';
 // redux
 import { useGetAllJobsQuery } from 'renderer/redux/services/job';
-import {
-  addToRevive,
-  resetToRevive,
-} from 'renderer/redux/features/jobSlice';
+import { addToRevive, resetToRevive } from 'renderer/redux/features/jobSlice';
 import { useSelector, useDispatch } from 'react-redux';
 // utils
 import { shouldRevive } from 'renderer/utils';
-import { useEffect, useState } from 'react';
-import ReviveModal from 'renderer/components/ReviveModal';
 
 const Home = () => {
   useGetAllJobsQuery();
   const dispatch = useDispatch();
 
   const [reviveModal, setReviveModal] = useState<boolean>(false);
-
+  // redux states
   const jobs: IJobResponse[] = useSelector((state: any) => state.jobSlice.jobs);
   const totalCount: number = useSelector((state: any) => state.jobSlice.count);
+  const ignoreRevive = useSelector((state: any) => state.jobSlice.ignoreRevive);
   const jobsToRevive: IJobResponse[] = useSelector(
     (state: any) => state.jobSlice.toRevive
   );
-  const ignoreRevive = useSelector((state: any) => state.jobSlice.ignoreRevive);
-
+  // counts
   const pendingCount = jobs.filter((item) => item.status === 'pending').length;
   const interviewCount = jobs.filter(
     (item) => item.status === 'interview'
@@ -37,9 +34,8 @@ const Home = () => {
     (item) => item.status === 'rejected'
   ).length;
 
-  const checkForRevive = (jobs: IJobResponse[]) => {
+  const checkForRevive = (jobs: IJobResponse[]): void => {
     dispatch(resetToRevive({}));
-
     jobs
       .filter((job) => job.status === 'pending')
       .forEach((job) => {

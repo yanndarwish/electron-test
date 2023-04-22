@@ -1,7 +1,10 @@
-import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+// react router, redux, react
 import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+// componenets
 import CreateJob from 'renderer/components/CreateJob';
+// icons
 import { MdAdd } from 'react-icons/md';
 
 

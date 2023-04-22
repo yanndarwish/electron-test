@@ -1,10 +1,13 @@
+import { useRegisterMutation } from 'renderer/redux/services/auth';
+import { useNavigate } from 'react-router-dom';
+// form
 import { Formik } from 'formik';
 import * as yup from 'yup';
-import { useRegisterMutation } from 'renderer/redux/services/auth';
+// types
 import { User } from 'renderer/types';
-import Loader from 'renderer/components/Loader';
 import { isApiResponse } from 'renderer/interfaces';
-import { useNavigate } from 'react-router-dom';
+// components
+import Loader from 'renderer/components/Loader';
 
 const initialValues: User = {
   name: 'Yann',
@@ -22,11 +25,11 @@ const Register = () => {
   const navigate = useNavigate();
   const [register, { error, isLoading, isSuccess }] = useRegisterMutation();
 
-  const handleSubmit = (values: User) => {
+  const handleSubmit = (values: User): void => {
     register(values);
   };
 
-  isSuccess && navigate("/")
+  isSuccess && navigate('/');
 
   return (
     <div className="h-screen flex justify-center items-center">

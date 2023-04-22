@@ -1,7 +1,7 @@
-import { FiExternalLink } from 'react-icons/fi';
-import { IJobResponse } from 'renderer/interfaces';
 import { useNavigate } from 'react-router-dom';
+import { IJobResponse } from 'renderer/interfaces';
 import { formatDate } from 'renderer/utils';
+import { FiExternalLink } from 'react-icons/fi';
 
 export interface IJobCardProps {
   job: IJobResponse;

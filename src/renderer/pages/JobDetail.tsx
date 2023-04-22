@@ -59,12 +59,12 @@ const JobDetail = () => {
     useUpdateJobMutation();
 
   // functions
-  const handleDelete = (id: string | undefined) => {
+  const handleDelete = (id: string | undefined): void => {
     navigate('/jobs');
     deleteJob({ id });
   };
 
-  const handleSubmit = (values: IJobStatus) => {
+  const handleSubmit = (values: IJobStatus): void => {
     updateJob({ id, payload: values });
   };
 
@@ -117,7 +117,11 @@ const JobDetail = () => {
         )}
         {/* form */}
         <div className="card-body">
-          {data?.job.createdAt && <h2 className='text-lg font-semibold ml-4'>Applied the {formatDate(data?.job.createdAt)}</h2>}
+          {data?.job.createdAt && (
+            <h2 className="text-lg font-semibold ml-4">
+              Applied the {formatDate(data?.job.createdAt)}
+            </h2>
+          )}
           {initialValues.company && (
             <Formik
               onSubmit={(values: IJobStatus, { resetForm }) => {

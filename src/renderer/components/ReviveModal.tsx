@@ -1,10 +1,14 @@
-import { IJobResponse } from 'renderer/interfaces';
-import { FiExternalLink } from 'react-icons/fi';
-import { formatDate } from 'renderer/utils';
 import { useRef } from 'react';
-import { setIgnoreRevive } from 'renderer/redux/features/jobSlice';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+// redux
+import { setIgnoreRevive } from 'renderer/redux/features/jobSlice';
+// utils
+import { formatDate } from 'renderer/utils';
+// types
+import { IJobResponse } from 'renderer/interfaces';
+// icons
+import { FiExternalLink } from 'react-icons/fi';
 
 export interface IReviveModalProps {
   open: boolean;
@@ -19,12 +23,13 @@ const ReviveModal = (props: IReviveModalProps) => {
 
   const handleOutsideClick = (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>
-  ) => {
+  ): void => {
     if (e.target === overlayRef.current) {
       props.setOpen(false);
       dispatch(setIgnoreRevive(true));
     }
   };
+
   return props.open ? (
     <div
       ref={overlayRef}

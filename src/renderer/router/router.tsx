@@ -1,7 +1,10 @@
+// router
 import { createHashRouter } from 'react-router-dom';
+// root
+import Root from './Root';
+// pages
 import Home from 'renderer/pages/Home';
 import Login from 'renderer/pages/Login';
-import Root from './Root';
 import Register from 'renderer/pages/Register';
 import Jobs from 'renderer/pages/Jobs';
 import JobDetail from 'renderer/pages/JobDetail';
