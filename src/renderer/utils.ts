@@ -51,7 +51,7 @@ export const shouldRevive = (job: IJobResponse) => {
   let difference = date - applicationDate;
   let totalDays = Math.ceil(difference / (1000 * 3600 * 24)); // convert milliseconds to days
 
-  if (totalDays > 1) {
+  if (totalDays > 14) {
     return true;
   }
   return false;
