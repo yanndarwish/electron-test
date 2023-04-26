@@ -11,7 +11,7 @@ import { Login } from 'renderer/types';
 import { isApiResponse } from 'renderer/interfaces';
 
 const initialValues: Login = {
-  email: 'dummy@gmail.com',
+  email: 'yann.darwish@gmail.com',
   password: 'secret',
 };
 

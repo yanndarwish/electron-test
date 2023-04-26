@@ -10,9 +10,9 @@ import { isApiResponse } from 'renderer/interfaces';
 import Loader from 'renderer/components/Loader';
 
 const initialValues: User = {
-  name: 'Yann',
-  email: 'yann.darwish@gmail.com',
-  password: 'secret',
+  name: '',
+  email: '',
+  password: '',
 };
 
 const registerSchema = yup.object().shape({
