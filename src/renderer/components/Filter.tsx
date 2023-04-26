@@ -7,7 +7,7 @@ export interface IFilterProps {
 
 const Filter = (props: IFilterProps) => {
   return (
-    <div className="my-8 flex gap-x-8">
+    <div className="my-8 flex gap-8 flex-wrap justify-center md:justify-start">
       {/* Default "All" radio button  */}
       <div className="form-control">
         <label
